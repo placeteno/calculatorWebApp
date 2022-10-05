@@ -10,29 +10,12 @@ let cur = '';
 let operation;
 let computation;
 
-const clear = function () {
+const clearData = function () {
   prev = '';
   cur = '';
   operation = '';
   currentNumber.textContent = '';
   currentOperation.textContent = '';
-};
-
-const calculate = function () {
-  if (operation === '+') {
-    computation = Number(prev) + Number(cur);
-    clear();
-  } else if (operation === '-') {
-    computation = Number(prev) - Number(cur);
-    clear();
-  } else if (operation === '*') {
-    computation = Number(prev) * Number(cur);
-    clear();
-  } else if (operation === '/') {
-    computation = Number(prev) / Number(cur);
-    clear();
-  }
-  currentNumber.textContent = computation;
 };
 
 const convertToNeg = function () {
@@ -45,6 +28,27 @@ const convertToNeg = function () {
   }
 };
 
+const formatNumber = function (num) {
+  return String(Number(num).toLocaleString());
+};
+
+const calculate = function () {
+  if (operation === '+') {
+    computation = Number(prev) + Number(cur);
+    clearData();
+  } else if (operation === '-') {
+    computation = Number(prev) - Number(cur);
+    clearData();
+  } else if (operation === '*') {
+    computation = Number(prev) * Number(cur);
+    clearData();
+  } else if (operation === '/') {
+    computation = Number(prev) / Number(cur);
+    clearData();
+  }
+  currentOperation.textContent = formatNumber(computation);
+};
+
 keyboard.addEventListener('click', e => {
   // gets input
   const key = e.target.closest('input');
@@ -53,17 +57,20 @@ keyboard.addEventListener('click', e => {
   // checks the type of key
   if (key.dataset.number) {
     if (key.value === '.' && cur.includes('.')) return; // check whether there's already a dot
+    if (cur.length === 8) return;
     cur += key.value;
-    currentNumber.textContent = cur;
+    let formated = formatNumber(cur);
+    currentNumber.textContent = formated;
     console.log(prev, cur, operation);
   } else if (key.dataset.operation) {
     if (key.value === '=') calculate();
-    else if (key.value === 'AC') clear();
+    else if (key.value === 'AC') clearData();
     else if (key.value === '-/+') convertToNeg();
     else {
       operation = key.value;
       prev = cur;
-      currentOperation.textContent = String(cur) + ' ' + String(operation);
+      currentOperation.textContent =
+        formatNumber(cur) + ' ' + String(operation);
       cur = '';
     }
   }
