@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <div class="app-container">
+      <div class="container">
+        <header class="header">
+          <h1>Calculator</h1>
+          <nav>
+            <ul class="appsList">
+              <li>
+                <p class="activeApp">Calculator</p>
+              </li>
+              <li>
+                <p>Temperature</p>
+              </li>
+              <li>
+                <p>Area</p>
+              </li>
+              <li>
+                <p>Currency</p>
+              </li>
+            </ul>
+          </nav>
+        </header>
+        <main>
+          <section class="calculatorApp">
+            <div class="calculatorBox">
+              <div class="screen">
+                <p class="currentOperation"></p>
+                <p class="currentNumber"></p>
+              </div>
+              <div class="numberKeyboard">
+                <input
+                  data-operation="AC"
+                  class="btn"
+                  type="button"
+                  value="AC"
+                />
+                <input data-operation="*" class="btn" type="button" value="*" />
+                <input data-operation="/" class="btn" type="button" value="/" />
+                <input data-number="1" class="btn" type="button" value="1" />
+                <input data-number="2" class="btn" type="button" value="2" />
+                <input data-number="3" class="btn" type="button" value="3" />
+                <input data-operation="-" class="btn" type="button" value="-" />
+                <input data-number="4" class="btn" type="button" value="4" />
+                <input data-number="5" class="btn" type="button" value="5" />
+                <input data-number="6" class="btn" type="button" value="6" />
+                <input data-operation="+" class="btn" type="button" value="+" />
+                <input data-number="7" class="btn" type="button" value="7" />
+                <input data-number="8" class="btn" type="button" value="8" />
+                <input data-number="9" class="btn" type="button" value="9" />
+                <input data-number="." class="btn" type="button" value="." />
+                <input data-number="0" class="btn" type="button" value="0" />
+                <input
+                  data-operation="neg"
+                  class="btn"
+                  type="button"
+                  value="-/+"
+                />
+                <!-- </div> -->
+                <!-- <div class="operationsKeyboard"> -->
+                <input
+                  data-operation="="
+                  class="btn equal"
+                  type="button"
+                  value="="
+                />
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+  </body>
+</html>
